@@ -33,7 +33,7 @@ main {
 	height:360px;
 	background-color:grey;
 	margin:0 auto;
-	/*overflow:hidden;*/
+	overflow: hidden;
 }
 
 #houseImages { position:relative; width:4000px; transition: all .5s; }
@@ -58,7 +58,7 @@ main {
 	overflow:hidden;
 	background-image:url(../images/GOT_sprites.png);
 	background-repeat:no-repeat;
-	transition:transform .3s;
+	transition: transform .3s;
 	-webkit-transition:-webkit-transform .3s;
 	-moz-transition:-moz-transform .3s;
 }
