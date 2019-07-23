@@ -16,9 +16,9 @@ body { background-image:url(../images/grungeBG.jpg);
 
 h1 {
 	font-family: 'GOT_font';
-	color:white;
-	margin-top:30px;
-	font-size:1.25em;
+	color: #ffffff;
+	margin-top: 30px;
+	font-size: 1.25em;
 }
 
 main {
@@ -33,11 +33,21 @@ main {
 	height:360px;
 	background-color:grey;
 	margin:0 auto;
-	/*overflow:hidden;*/
+	overflow: hidden;
 }
 
 #houseImages { position:relative; width:4000px; transition: all .5s; }
+
 #houseImages img { float:left; }
+
+.house-info { 
+	color: white;
+	width: 75%;
+	font-size: 1.5em;
+	line-height: 1.5;
+	margin: 10px auto 0 auto; 
+}
+
 
 #bottomNav { margin-top:30px; }
 
@@ -58,7 +68,7 @@ main {
 	overflow:hidden;
 	background-image:url(../images/GOT_sprites.png);
 	background-repeat:no-repeat;
-	transition:transform .3s;
+	transition: transform .3s;
 	-webkit-transition:-webkit-transform .3s;
 	-moz-transition:-moz-transform .3s;
 }
