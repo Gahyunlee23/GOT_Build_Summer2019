@@ -16,9 +16,9 @@ body { background-image:url(../images/grungeBG.jpg);
 
 h1 {
 	font-family: 'GOT_font';
-	color:white;
-	margin-top:30px;
-	font-size:1.25em;
+	color: #ffffff;
+	margin-top: 30px;
+	font-size: 1.25em;
 }
 
 main {
@@ -37,7 +37,17 @@ main {
 }
 
 #houseImages { position:relative; width:4000px; transition: all .5s; }
+
 #houseImages img { float:left; }
+
+.house-info { 
+	color: white;
+	width: 75%;
+	font-size: 1.5em;
+	line-height: 1.5;
+	margin: 10px auto 0 auto; 
+}
+
 
 #bottomNav { margin-top:30px; }
 
