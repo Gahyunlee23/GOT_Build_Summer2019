@@ -8,7 +8,12 @@
         houseVideo = document.querySelector('.house-video'),
         bannerImages = document.querySelector("#houseImages"),
         houseName = document.querySelector("#house-name")
-        houseInfo = document.querySelector(".house-info");
+        houseInfo = document.querySelector(".house-info"),
+        pauseButton = document.querySelector(".fa-pause-circle"),
+        playButton = document.querySelector(".fa-play-circle");
+
+
+  let chosenBanner = "";
 
   // houseData is a multidimensional (arrays within arrays!) Data containers can hold anything - 
   // in this case, each index or entry hold another, smaller container with 2 indexes - I with the house name, one with the house data.
@@ -60,17 +65,55 @@
     It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently 
     as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. 
     The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, 
-    with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`]
-  ];
+    with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`],
+  
+    ["targaryen", `House Targaryen of Dragonstone is a Great House of Westeros and was the ruling royal House of the Seven Kingdoms for three centuries 
+    since it conquered and unified the realm, before it was deposed during Robert's Rebellion and House Baratheon replaced it as the new royal House. 
+  The few surviving Targaryens fled into exile to the Free Cities of Essos across the Narrow Sea. 
+  Currently based on Dragonstone off of the eastern coast of Westeros, House Targaryen seeks to retake the Seven Kingdoms 
+  from House Lannister, who formally replaced House Baratheon as the royal 
+  House following the destruction of the Great Sept of Baelor.`],
+  
+    ["frey", `House Frey of the Twins was the Great House of the Riverlands, 
+  having gained their position for their treachery against their former liege lords, House Tully, who were stripped of all their lands and titles for their rebellion against the Iron Throne; House Tully had supported the independence movement for the Kingdom of the North. The current head of the house is unknown following the assassinations of Lord Walder Frey and two of his sons, Lothar Frey and Walder Rivers, by the vengeful Arya Stark. 
+  This is made more complex by the subsequent assassination of all the male Freys soon after.`],
+  
+  
+  ["tyrell", `House Tyrell of Highgarden is an extinct Great House of Westeros. 
+  It ruled over the Reach, a vast, fertile, and heavily-populated region of southwestern Westeros, from their castle-seat of Highgarden as Lords Paramount of the Reach and Wardens of the South after taking control of the region from House Gardener during the Targaryen conquest. `],
+];
+
+  // pause the video on a click
+  function pauseVideo() {
+    houseVideo.pause();
+  }
+
+  function playVideo() {
+    houseVideo.play();
+  }
 
 
-  function popLightBox() {
+  function popLightBox(chosen) {
     //debug this so far and make sure the event handling works
     // debugger;
 
     lightBox.classList.add('show-lightBox');
 
-    houseVideo.play();
+    //grab a reference to the current video via the className object
+    //debugger;
+    // grab a className property, split it into its seperate words (an array)
+    let houseName = chosenBanner.className.split(" ")[1];
+    //debugger;
+    // capitalize the first letter with JavaScript string methods
+    houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+
+    // Use JavaScript strinngs interpolation to build the path to the target video
+
+    let videoPath = `video/House-${houseName}.mp4`;
+    houseVideo.src = videoPath;
+    houseVideo.load();
+
+    // houseVideo.play();
   }
 
 // e = event
@@ -104,15 +147,17 @@
     houseName.textContent = `House ${houseData[multiplier][0]}`;
     houseInfo.textContent = houseData[this.dataset.offset][1];
 
+    chosenBanner = this;
     // debugger;
   }
 
-  // sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
+  bannerImages.addEventListener("transitionend", popLightBox);
   sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
+  
   closeButton.addEventListener("click", closeLightBox);
-
   houseVideo.addEventListener('ended', closeLightBox);
-
-
+  pauseButton.addEventListener("click", pauseVideo);
+  playButton.addEventListener("click", playVideo);
+  
 
 })();
