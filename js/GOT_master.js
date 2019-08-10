@@ -10,7 +10,8 @@
         houseName = document.querySelector("#house-name")
         houseInfo = document.querySelector(".house-info"),
         pauseButton = document.querySelector(".fa-pause-circle"),
-        playButton = document.querySelector(".fa-play-circle");
+        playButton = document.querySelector(".fa-play-circle"),
+        muteButton = document.querySelector(".fa-volume-mute");
 
 
   let chosenBanner = "";
@@ -92,6 +93,10 @@
     houseVideo.play();
   }
 
+  function muteVideo() {
+    houseVideo.muted = true;
+  }
+
 
   function popLightBox(chosen) {
     //debug this so far and make sure the event handling works
@@ -158,6 +163,5 @@
   houseVideo.addEventListener('ended', closeLightBox);
   pauseButton.addEventListener("click", pauseVideo);
   playButton.addEventListener("click", playVideo);
-  
-
+  muteButton.addEventListener("click", muteVideo);
 })();
